@@ -10,8 +10,18 @@ export function MemberCard({ member, detailed = false }: MemberCardProps) {
   return (
     <article className="card stack-md">
       <div className="stack-sm">
-        <span className="badge">{member.status}</span>
-        <h3>{member.name}</h3>
+        <span
+          className={`badge ${member.status === "Inactive"
+              ? "badge-inactive"
+              : member.status === "Goal Reached"
+                ? "badge-success"
+                : member.status === "Needs Encouragement"
+                  ? "badge-warning"
+                  : "badge-active"
+            }`}
+        >
+          {member.status}
+        </span>        <h3>{member.name}</h3>
         <p className="helper">{member.role}</p>
       </div>
 
