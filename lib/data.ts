@@ -2,7 +2,12 @@ export type Member = {
   id: number;
   name: string;
   role: string;
-  status: "Active" | "New Member" | "Goal Reached" | "Needs Encouragement";
+    status:
+    | "Active"
+    | "Inactive"
+    | "New Member"
+    | "Goal Reached"
+    | "Needs Encouragement";
   savingsGoal: number;
   currentSavings: number;
   investmentGoal: number;
