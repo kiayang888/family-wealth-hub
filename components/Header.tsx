@@ -14,9 +14,9 @@ export function Header() {
     <header className="site-header">
       <div className="site-header-inner">
         <a href="/" className="brand">
-          <div className="brand-mark">FH</div>
+          <div className="brand-mark">FIG</div>
           <div className="brand-copy">
-            <strong>Family Wealth Hub</strong>
+            <strong>Family Investment Group</strong>
             <span>Save, invest, and grow together</span>
           </div>
         </a>
