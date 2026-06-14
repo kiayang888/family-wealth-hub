@@ -1,20 +1,32 @@
-import { SectionTitle } from "@/components/SectionTitle";
-import { MeetingCard } from "@/components/MeetingCard";
-import { meetings } from "@/lib/data";
-
 export default function MeetingsPage() {
   return (
-    <div className="stack-xl">
-      <SectionTitle
-        title="Meeting Notes"
-        subtitle="Document discussions, decisions, and next steps."
-      />
+    <main className="p-6">
+      <h1 className="text-2xl font-bold">Meetings</h1>
 
-      <div className="grid cards-grid">
-        {meetings.map((meeting) => (
-          <MeetingCard key={meeting.id} meeting={meeting} detailed />
-        ))}
-      </div>
-    </div>
+      <form className="space-y-4 mt-4">
+        <input
+          type="text"
+          placeholder="Meeting Title"
+          className="border p-2 w-full"
+        />
+
+        <input
+          type="date"
+          className="border p-2 w-full"
+        />
+
+        <textarea
+          placeholder="Notes"
+          className="border p-2 w-full h-32"
+        />
+
+        <button
+          type="submit"
+          className="bg-green-600 text-white px-4 py-2 rounded"
+        >
+          Add Meeting
+        </button>
+      </form>
+    </main>
   );
 }

@@ -1,35 +1,33 @@
-import { supabase } from "@/lib/supabase";
-import { SectionTitle } from "@/components/SectionTitle";
-
-export default async function MembersPage() {
-  const { data: members, error } = await supabase
-    .from("members")
-    .select("*")
-    .order("created_at", { ascending: false });
-
-  if (error) {
-    return <p>Error loading members: {error.message}</p>;
-  }
-
+export default function MembersPage() {
   return (
-    <div className="stack-xl">
-      <SectionTitle
-        title="Family Members"
-        subtitle="Track each member's goals, progress, and participation."
-      />
+    <main className="p-6">
+      <h1 className="text-2xl font-bold">Members</h1>
 
-      <div className="grid cards-grid">
-        {members?.map((member) => (
-          <article key={member.id} className="card stack-sm">
-            <span className="badge">{member.status}</span>
-            <h3>{member.name}</h3>
-            <p>{member.role}</p>
-            <p>Savings: ${member.current_savings}</p>
-            <p>Investments: ${member.current_investments}</p>
-            <p className="helper">{member.notes}</p>
-          </article>
-        ))}
-      </div>
-    </div>
+      <form className="space-y-4 mt-4">
+        <input
+          type="text"
+          placeholder="Name"
+          className="border p-2 w-full"
+        />
+
+        <input
+          type="email"
+          placeholder="Email"
+          className="border p-2 w-full"
+        />
+
+        <select className="border p-2 w-full">
+          <option>Member</option>
+          <option>Admin</option>
+        </select>
+
+        <button
+          type="submit"
+          className="bg-blue-600 text-white px-4 py-2 rounded"
+        >
+          Add Member
+        </button>
+      </form>
+    </main>
   );
 }
