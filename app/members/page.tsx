@@ -8,6 +8,7 @@ async function addMember(formData: FormData) {
   const phone = formData.get("phone") as string;
   const address = formData.get("address") as string;
   const role = formData.get("role") as string;
+  const member_status = formData.get("member_status") as string;
 
   if (!full_name) {
     throw new Error("Full name is required");
@@ -20,6 +21,7 @@ async function addMember(formData: FormData) {
       phone,
       address,
       role,
+      member_status,
     },
   ]);
 
@@ -98,6 +100,17 @@ export default async function MembersPage() {
                 className="w-full rounded-lg border border-gray-300 px-4 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
               />
             </div>
+                        <div>
+              <label className="mb-2 block text-sm font-medium text-gray-700">
+                member status
+              </label>
+              <input
+                name="member_status"
+                type="text"
+                placeholder="Enter member status"
+                className="w-full rounded-lg border border-gray-300 px-4 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+              />
+            </div>
             
             <div>
               <label className="mb-2 block text-sm font-medium text-gray-700">
@@ -139,6 +152,7 @@ export default async function MembersPage() {
                 <th className="px-6 py-3">Email</th>
                 <th className="px-6 py-3">Phone</th>
                 <th className="px-6 py-3">Address</th>
+                <th className="px-6 py-3">Member Status</th>
                 <th className="px-6 py-3">Role</th>
               </tr>
             </thead>
@@ -157,6 +171,9 @@ export default async function MembersPage() {
                   </td>
                   <td className="px-6 py-4 text-gray-600">
                     {member.address || "-"}
+                  </td>
+                  <td className="px-6 py-4 text-gray-600">
+                    {member.member_status || "-"}
                   </td>
                   <td className="px-6 py-4">
                     <span className="rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-700">
